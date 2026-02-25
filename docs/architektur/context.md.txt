@@ -1,0 +1,19 @@
+# C4 Level 1 – System Context
+
+```mermaid
+flowchart LR
+    User((User))
+
+    WebApp[Web Frontend]
+    iOSApp[iOS App]
+    AndroidApp[Android App]
+
+    NeuroTrack[NeuroTrack System]
+
+    User --> WebApp
+    User --> iOSApp
+    User --> AndroidApp
+
+    WebApp --> NeuroTrack
+    iOSApp --> NeuroTrack
+    AndroidApp --> NeuroTrack

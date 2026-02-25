@@ -1,0 +1,16 @@
+```markdown
+# Sync Protocol
+
+```mermaid
+sequenceDiagram
+    participant App
+    participant Backend
+    participant DB
+
+    App->>Backend: POST /sync/push
+    Backend->>DB: Persist changes
+    Backend->>App: new_rev
+
+    App->>Backend: GET /sync/pull
+    Backend->>DB: Fetch delta
+    Backend->>App: Changes

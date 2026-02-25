@@ -1,0 +1,13 @@
+```markdown
+# Deployment
+
+```mermaid
+flowchart LR
+    Browser --> Webspace
+    Webspace --> API
+
+    subgraph VPS
+        API[Spring Boot]
+        ML[FastAPI]
+        DB[(Postgres)]
+    end

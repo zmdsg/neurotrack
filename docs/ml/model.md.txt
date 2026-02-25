@@ -1,0 +1,13 @@
+```markdown
+# ML Reminder Optimization
+
+```mermaid
+flowchart LR
+    Events[event_log]
+    Stats[daily_stats]
+    Events --> Dataset
+    Stats --> Dataset
+    Dataset --> Train
+    Train --> Model
+    Model --> MLService
+    MLService --> Backend

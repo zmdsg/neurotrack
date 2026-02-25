@@ -1,0 +1,19 @@
+# ADR 0003 – Offline-First Sync
+
+## Status
+Accepted
+
+## Context
+Mobile users frequently operate without stable connectivity.
+
+## Decision
+Implement delta-based sync with monotonic server revisions.
+
+## Alternatives
+- Full-state synchronization
+- CRDT-based replication
+
+## Consequences
++ Reduced bandwidth
++ Deterministic conflict resolution
+- Limited merge capability

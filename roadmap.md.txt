@@ -1,0 +1,439 @@
+🚀 PHASE 0 – Fundament (Woche 1)
+🎯 Ziel
+
+Projektstruktur + CI + lokale Infrastruktur stehen.
+
+Aufgaben
+Repo Setup
+
+Monorepo Struktur anlegen
+
+docs/ initialisieren
+
+Makefile oder Dev-Scripts erstellen
+
+.editorconfig, .gitignore, Lizenz
+
+Infrastruktur lokal
+
+docker-compose.yml
+
+Postgres
+
+Backend
+
+ML Service (Stub)
+
+Flyway Migration V1
+
+CI/CD Basis
+
+GitHub Actions:
+
+Backend Build + Test
+
+Docker Image Build
+
+Frontend Build
+
+DockerHub Push
+
+Dokumentation
+
+README v1
+
+ADR 0001 (Monorepo)
+
+C4 Level 1 + 2
+
+🧱 PHASE 1 – Backend Core (Wochen 2–6)
+🎯 Ziel
+
+Produktive API mit Auth + Habits + Event Logging.
+
+Backend
+
+Auth (JWT)
+
+Users + Devices
+
+Habits CRUD
+
+Habit Logs (append-only)
+
+/events/batch
+
+Observability (Health + Logging)
+
+Flyway Migrationen sauber versioniert
+
+Testing
+
+Unit Tests (Domain Logic)
+
+Integration Tests (Spring + DB)
+
+Testcontainers optional
+
+Test Coverage > 60%
+
+Dokumentation
+
+Backend Components (C4 Level 3)
+
+ADR 0002 (Modular Monolith)
+
+Data Model Dokumentation
+
+📱 PHASE 2 – iOS MVP + Offline-First (Wochen 7–10)
+🎯 Ziel
+
+Offline-fähige iOS App mit Sync v1.
+
+iOS
+
+Login
+
+Habits Liste
+
+Complete Habit
+
+Local DB
+
+Sync Engine (push/pull)
+
+Conflict Handling (LWW)
+
+Backend
+
+/sync/push
+
+/sync/pull
+
+sync_changes + server_rev
+
+Testing
+
+Unit Tests ViewModels
+
+Integration Test Sync Flow
+
+Manuelle Offline Tests (Airplane Mode)
+
+Dokumentation
+
+Sync Protocol Diagram
+
+Conflict Matrix
+
+ADR 0003 (Offline Sync)
+
+📚 PHASE 3 – Learning + Spaced Repetition (Wochen 11–14)
+🎯 Ziel
+
+Funktionierende Lern-Engine.
+
+Backend
+
+Learning Items
+
+Reviews
+
+Scheduling Algorithmus (deterministisch)
+
+Review Queue Endpoint
+
+iOS
+
+Flashcard UI
+
+Review Flow
+
+Snapshot Tests
+
+Testing
+
+Scheduling Unit Tests
+
+Edge Case Tests (Due Dates)
+
+Dokumentation
+
+Learning Domain Dokumentation
+
+Scheduling Algorithm Erklärung
+
+🦋 PHASE 4 – Flutter Client (Wochen 15–18)
+🎯 Ziel
+
+Android Parität + Cross-Platform Architektur.
+
+Flutter
+
+Clean Architecture Setup
+
+Habits + Learning
+
+Local Persistence
+
+Sync v1 Portierung
+
+Testing
+
+Widget Tests
+
+Sync Tests
+
+Basic Integration Tests
+
+Dokumentation
+
+Flutter Architecture Doc
+
+Vergleich iOS vs Flutter
+
+🤖 PHASE 5 – Baseline Recommendations (Wochen 19–22)
+🎯 Ziel
+
+Smart Reminders ohne ML.
+
+Backend
+
+Heuristik-basierte Reminder Slots
+
+/recommendations
+
+Notification Scheduling
+
+Push Integration (APNs/FCM)
+
+Testing
+
+Reminder Slot Tests
+
+Scheduling Tests
+
+Dokumentation
+
+Recommendation Flow
+
+Fallback Strategy
+
+🧠 PHASE 6 – ML Integration (Wochen 23–28)
+🎯 Ziel
+
+Produktionsreife ML Integration mit Fallback.
+
+ML
+
+Dataset Builder aus event_log
+
+Logistic Regression v1
+
+Model Versioning
+
+Evaluation Script
+
+Model Card
+
+Backend
+
+ML Client
+
+Timeout + Circuit Breaker
+
+Fallback auf Heuristik
+
+ML Metrics (Fallback Rate)
+
+Testing
+
+Contract Test Backend ↔ ML
+
+Offline Evaluation
+
+Performance Test (<150ms inference)
+
+Dokumentation
+
+ML Pipeline Diagram
+
+Model Card
+
+ADR 0004 (ML Fallback)
+
+Evaluation Metrics
+
+🚀 PHASE 7 – Deployment & Production Hardening (Wochen 29–34)
+🎯 Ziel
+
+Produktionsreifer Live-Betrieb.
+
+Deployment
+VPS (IONOS)
+
+Docker Compose Prod
+
+NGINX Reverse Proxy
+
+HTTPS via Certbot
+
+Firewall (UFW)
+
+DB nicht öffentlich
+
+Cron Backup
+
+Webspace
+
+Frontend Build
+
+FTPS Deploy via GitHub Actions
+
+SPA .htaccess
+
+CI/CD
+
+Backend:
+
+Test
+
+Build
+
+Docker Push
+
+SSH Deploy
+
+Frontend:
+
+Build
+
+FTPS Upload
+
+📊 PHASE 8 – Testing & Observability (Wochen 35–38)
+🎯 Ziel
+
+System belastbar + messbar.
+
+Tests
+Backend
+
+70% Coverage
+
+Integration Tests
+
+Load Test (Sync + Events)
+
+Failure Simulation (ML down)
+
+Mobile
+
+Offline Stress Test
+
+Sync Race Condition Tests
+
+Observability
+
+Structured Logging
+
+Metrics:
+
+sync latency
+
+conflict rate
+
+ml fallback rate
+
+Health Endpoints
+
+Optional: Prometheus Exporter
+
+Dokumentation
+
+Deployment Runbook
+
+Backup Runbook
+
+Monitoring Strategy
+
+📚 PHASE 9 – Dokumentation Finalisieren (Wochen 39–40)
+🎯 Ziel
+
+Portfolio-ready.
+
+Final Docs
+
+README polished
+
+C4 Level 1–3
+
+Sync Sequence
+
+ML Pipeline
+
+Deployment Diagram
+
+4 ADRs
+
+Model Card
+
+Architecture Overview
+
+Optional:
+
+MkDocs + GitHub Pages
+
+🧪 TESTSTRATEGIE (Zusammenfassung)
+Ebene	Testtyp
+Domain	Unit Tests
+API	Integration Tests
+DB	Migration Tests
+Sync	E2E Sync Simulation
+ML	Offline Evaluation + Contract Tests
+Mobile	ViewModel + Widget Tests
+Infra	Health Checks
+🚀 DEPLOYMENT FLOW FINAL
+
+Git Push
+
+GitHub Actions:
+
+Backend Test
+
+Docker Build
+
+DockerHub Push
+
+SSH Deploy
+
+Frontend:
+
+Build
+
+FTPS Upload
+
+VPS:
+
+Docker Compose Pull
+
+Restart Services
+
+🎯 Ergebnis nach kompletter Roadmap
+
+Du kannst glaubwürdig sagen:
+
+Ich baue Offline-First Systeme
+
+Ich designe Sync-Protokolle
+
+Ich integriere ML produktionsreif
+
+Ich deploye Docker auf Linux
+
+Ich betreibe Infrastruktur
+
+Ich dokumentiere Architektur professionell
+
+Ich denke in Trade-offs
+
+Das ist deutlich über durchschnittlichem Senior-Niveau.

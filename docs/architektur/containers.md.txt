@@ -1,0 +1,15 @@
+```markdown
+# Container Diagram
+
+```mermaid
+flowchart LR
+    User --> Web
+    User --> iOS
+    User --> Android
+
+    Web --> Backend
+    iOS --> Backend
+    Android --> Backend
+
+    Backend --> DB[(PostgreSQL)]
+    Backend --> ML[ML Service]

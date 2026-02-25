@@ -1,0 +1,76 @@
+# Architecture Overview
+
+NeuroTrack is a learning and habit intelligence platform built with an offline-first mobile architecture, a modular monolith backend, and an ML-powered recommendation layer.
+
+The system is designed to:
+
+- Support unreliable mobile connectivity
+- Scale gradually without premature microservices
+- Provide adaptive reminder optimization
+- Remain simple enough for a small team
+
+---
+
+## Design Principles
+
+### 1. Offline-First by Default
+Mobile clients write locally and synchronize using a delta-based protocol.
+
+### 2. Modular Monolith Backend
+Instead of microservices, the backend is structured as a modular monolith:
+- Clear domain boundaries
+- Internal module separation
+- Single deployable unit
+
+This reduces operational complexity while preserving scalability.
+
+### 3. Append-Only Behavioral Logging
+User actions are stored in an event log to support:
+- Analytics
+- ML training
+- Feature iteration
+
+### 4. ML as an Enhancement Layer
+Machine learning is used only where it adds measurable value:
+- Adaptive reminder scheduling
+- Future: difficulty prediction
+
+ML failures never break the core product (fallback always available).
+
+---
+
+## High-Level Architecture
+
+- Web frontend (static, hosted on IONOS Webspace)
+- Native iOS client (SwiftUI)
+- Android client (Flutter)
+- Spring Boot backend
+- PostgreSQL database
+- FastAPI ML service
+- NGINX reverse proxy
+- Docker-based deployment
+
+---
+
+## Scalability Strategy
+
+Phase 1:
+- Single VPS
+- Backend + ML + DB in Docker
+
+Phase 2:
+- Separate ML service
+- Managed database
+- Horizontal scaling behind reverse proxy
+
+No premature microservices.
+
+---
+
+## Key Technical Differentiators
+
+- Delta-based sync with monotonic server revision
+- Event-based behavior modeling
+- Deterministic conflict resolution (LWW)
+- ML model versioning + fallback
+- Production-ready Docker deployment

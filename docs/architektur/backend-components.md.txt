@@ -1,0 +1,31 @@
+```markdown
+# C4 Level 3 – Backend Components
+
+```mermaid
+flowchart TB
+    API[REST Controllers]
+    Auth[Security Layer]
+    Habits[Habits Module]
+    Learning[Learning Module]
+    Reviews[Reviews Module]
+    Sync[Sync Module]
+    Reco[Recommendation Module]
+    EventLog[Event Log]
+    DB[(PostgreSQL)]
+    ML[ML Client]
+
+    API --> Auth
+    API --> Habits
+    API --> Learning
+    API --> Reviews
+    API --> Sync
+    API --> Reco
+
+    Habits --> DB
+    Learning --> DB
+    Reviews --> DB
+    Sync --> DB
+    Reco --> ML
+
+    API --> EventLog
+    EventLog --> DB
