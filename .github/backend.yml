@@ -1,0 +1,23 @@
+name: Backend CI
+
+on:
+  push:
+    paths:
+      - "backend/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Build
+        working-directory: backend
+        run: ./gradlew build --no-daemon

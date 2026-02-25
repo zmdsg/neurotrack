@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: neurotrack
+      POSTGRES_USER: neuro
+      POSTGRES_PASSWORD: neuro
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ../../backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/neurotrack
+      SPRING_DATASOURCE_USERNAME: neuro
+      SPRING_DATASOURCE_PASSWORD: neuro
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
